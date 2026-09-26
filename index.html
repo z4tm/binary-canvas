@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Private, client-side PE and ELF binary explorer with entropy, sections, strings and hex views.">
+  <title>Binary Canvas</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <a class="brand" href="."><span>BC</span> Binary Canvas</a>
+    <div class="header-right"><span id="status">local · private</span><a href="https://github.com/z4tm/binary-canvas">source</a></div>
+  </header>
+
+  <main>
+    <section id="drop" class="drop" tabindex="0">
+      <input id="file" type="file" hidden>
+      <div class="drop-mark">01</div>
+      <div><strong>Drop a PE or ELF binary</strong><span>Analysis stays in your browser. Nothing is uploaded.</span></div>
+      <button type="button">Choose file</button>
+    </section>
+
+    <section id="empty" class="empty">
+      <div>
+        <span class="eyebrow">LOCAL BINARY INTELLIGENCE</span>
+        <h1>See the shape of<br>an executable.</h1>
+        <p>Headers, sections, entropy, strings and raw bytes in one client-side workspace.</p>
+      </div>
+      <div class="formats"><span>PE32</span><span>PE32+</span><span>ELF32</span><span>ELF64</span></div>
+    </section>
+
+    <section id="workspace" hidden>
+      <div class="file-title"><span class="eyebrow">ANALYSIS</span><h1 id="filename"></h1></div>
+      <div id="summary" class="summary"></div>
+
+      <div class="grid wide-left">
+        <article class="panel">
+          <div class="panel-head"><div><span class="eyebrow">STRUCTURE</span><h2>Sections</h2></div></div>
+          <div id="sections" class="table"></div>
+        </article>
+        <article class="panel">
+          <div class="panel-head"><div><span class="eyebrow">DENSITY</span><h2>Entropy map</h2></div><span class="muted">click a block to inspect</span></div>
+          <canvas id="entropy"></canvas>
+          <div class="scale"><span>0.0</span><i></i><span>8.0</span></div>
+        </article>
+      </div>
+
+      <div class="grid equal">
+        <article class="panel">
+          <div class="panel-head"><div><span class="eyebrow">BYTES</span><h2>Hex view</h2></div><label>offset <input id="offset" value="0x0"></label></div>
+          <div id="hex" class="hex"></div>
+        </article>
+        <article class="panel">
+          <div class="panel-head"><div><span class="eyebrow">TEXT</span><h2>Strings</h2></div><input id="search" type="search" placeholder="filter strings"></div>
+          <div id="strings" class="strings"></div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer><span>Binary Canvas</span><span>zero uploads · zero tracking · zero runtime dependencies</span></footer>
+  <script type="module" src="dist/app.js"></script>
+</body>
+</html>
