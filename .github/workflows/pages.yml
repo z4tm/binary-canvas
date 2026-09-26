@@ -29,6 +29,8 @@ jobs:
       - run: mkdir site && cp index.html style.css site/ && cp -r dist site/dist
       - uses: actions/configure-pages@v5
         if: github.event_name == 'push'
+        with:
+          enablement: true
       - uses: actions/upload-pages-artifact@v3
         if: github.event_name == 'push'
         with:
